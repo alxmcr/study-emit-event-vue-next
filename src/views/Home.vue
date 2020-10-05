@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld @show="showMyDiv" />
+    <div class="message" v-if="show === true">Hello!</div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
+  data() {
+    return {
+      show: false,
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  methods: {
+    showMyDiv() {
+      this.show = true;
+    },
+  },
+};
 </script>
+<style scoped>
+.message {
+  font-size: 2rem;
+}
+</style>
